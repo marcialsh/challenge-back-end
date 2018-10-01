@@ -35,6 +35,7 @@ namespace BlogStarWars.Database.Migrations
                         .NotNullable()
                     .WithColumn("DataCriacao")
                         .AsDateTime()
+                        .WithDefault(SystemMethods.CurrentDateTime)
                         .NotNullable()
                     .WithColumn("EstaDeletado")
                         .AsBoolean()
