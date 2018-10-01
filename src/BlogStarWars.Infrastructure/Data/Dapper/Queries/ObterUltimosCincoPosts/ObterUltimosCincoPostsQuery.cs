@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BlogStarWars.Infrastructure.Data.Dapper.DapperConnection;
 using Dapper;
 
 namespace BlogStarWars.Infrastructure.Data.Dapper.Queries.ObterUltimosCincoPosts
 {
     public class ObterUltimosCincoPostsQuery : QueryBase<ObterUltimosCincoPostsParameter, IEnumerable<ObterUltimosCincoPostsResult>>
     {
-        public override async Task<IEnumerable<ObterUltimosCincoPostsResult>> Handle(ObterUltimosCincoPostsParameter parameter)
+        public ObterUltimosCincoPostsQuery(IDapperConnectionFactory connectionFactory) : base(connectionFactory)
+        {
+        }
+
+        public override async Task<IEnumerable<ObterUltimosCincoPostsResult>> HandleAsync(ObterUltimosCincoPostsParameter parameter)
         {
             const string query = @"
             SELECT 

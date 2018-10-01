@@ -1,13 +1,17 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogStarWars.Infrastructure.Data.Dapper.DapperConnection;
 using Dapper;
 
 namespace BlogStarWars.Infrastructure.Data.Dapper.Queries.ObterRelatorioPosts
 {
     public class ObterRelatorioPostsQuery : QueryBase<ObterRelatorioPostsParameter, ObterRelatorioPostsResult>
     {
-        public override async Task<ObterRelatorioPostsResult> Handle(ObterRelatorioPostsParameter parameter)
+        public ObterRelatorioPostsQuery(IDapperConnectionFactory connectionFactory) : base(connectionFactory)
+        {
+        }
+
+        public override async Task<ObterRelatorioPostsResult> HandleAsync(ObterRelatorioPostsParameter parameter)
         {
             const string query = @"
             SELECT 

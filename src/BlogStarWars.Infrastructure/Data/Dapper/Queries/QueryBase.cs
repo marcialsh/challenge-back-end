@@ -6,6 +6,12 @@ namespace BlogStarWars.Infrastructure.Data.Dapper.Queries
     public abstract class QueryBase<TParameter, TResult> where TResult : class
     {
         protected IDapperConnectionFactory ConnectionFactory;
-        public abstract Task<TResult> Handle(TParameter parameter);
+
+        protected QueryBase(IDapperConnectionFactory connectionFactory)
+        {
+            ConnectionFactory = connectionFactory;
+        }
+
+        public abstract Task<TResult> HandleAsync(TParameter parameter);
     }
 }

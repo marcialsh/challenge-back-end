@@ -11,8 +11,6 @@ namespace tests.BlogStarWars.Core.Entities {
         [Fact]
         public void Deve_Criar_Um_Post_Em_Um_Estado_Valido () {
             //Arrange
-            var id = 10101;
-
             var payloadTitulo = new char[100];
             var titulo = new string (payloadTitulo, 0, 100);
 
@@ -23,7 +21,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var conteudo = new string (payloadConteudo, 0, 5000);
 
             //Act
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Assert
             //Valida a criação do objeto.
@@ -41,11 +39,6 @@ namespace tests.BlogStarWars.Core.Entities {
                 .BeOfType (typeof (Post));
 
             //Valida o estado das propriedades.
-            post
-                .Id
-                .Should ()
-                .Be (id);
-            
             post
                 .Titulo
                 .Should()
@@ -80,8 +73,6 @@ namespace tests.BlogStarWars.Core.Entities {
         [InlineData (18123)]
         public void Deve_Ser_Invalido_Informar_Um_Titulo_Com_Comprimento_Maior_Que_Cem_Caracteres (int comprimentoTitulo) {
             //Arrange
-            var id = 182312;
-
             var payloadTitulo = new char[comprimentoTitulo];
             var titulo = new string (payloadTitulo, 0, comprimentoTitulo);
 
@@ -92,7 +83,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var conteudo = new string (payloadConteudo, 0, 5000);
 
             //Act
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Assert
             post
@@ -118,8 +109,6 @@ namespace tests.BlogStarWars.Core.Entities {
         [InlineData (12311)]
         public void Deve_Ser_Invalido_Informar_A_Descricao_Com_Comprimento_Maior_Que_Trezentos_E_Cinquenta_Caracteres (int comprimentoDescricao) {
             //Arrange
-            var id = 818119;
-
             var payloadTitulo = new char[100];
             var titulo = new string (payloadTitulo, 0, 100);
 
@@ -130,7 +119,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var conteudo = new string (payloadConteudo, 0, 5000);
 
             //Act
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Assert
             post
@@ -157,8 +146,6 @@ namespace tests.BlogStarWars.Core.Entities {
         [InlineData (11919199)]
         public void Deve_Ser_Invalido_Informar_O_Conteudo_Com_Comprimento_Maior_Que_Cinquenta_Mil_Caracteres (int comprimentoConteudo) {
             //Arrange
-            var id = 188181;
-
             var payloadTitulo = new char[100];
             var titulo = new string (payloadTitulo, 0, 100);
 
@@ -169,7 +156,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var conteudo = new string (payloadConteudo, 0, comprimentoConteudo);
 
             //Act
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Assert
             post
@@ -195,13 +182,11 @@ namespace tests.BlogStarWars.Core.Entities {
         {
             //Arrange
             //TODO: Futuramente desenvolver um Builder para Post
-            var id = 10101;
-
             var titulo = "What is Lorem Ipsum?";
             var descricao = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
             var conteudo = "It is a long established fact that a reader will be distracted by the readable content.";
             
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Construindo a estrutura para alteração do post.
             var tituloAlteracao = "What is Gilbertagem Alada?";
@@ -253,13 +238,11 @@ namespace tests.BlogStarWars.Core.Entities {
         {
             //Arrange
             //TODO: Futuramente desenvolver um Builder para Post
-            var id = 10101;
-
             var titulo = "What is Lorem Ipsum?";
             var descricao = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.";
             var conteudo = "It is a long established fact that a reader will be distracted by the readable content.";
             
-            var post = new Post (id, titulo, descricao, conteudo);
+            var post = new Post (titulo, descricao, conteudo);
 
             //Construindo a estrutura para alteração do post.
             var tituloAlteracao = "What is Lorem Ipsum?";
@@ -313,8 +296,6 @@ namespace tests.BlogStarWars.Core.Entities {
         public void Deve_Contabilizar_Um_Ponto_Por_Like(int quantidadeLikes)
         {
             //Arrange
-            var id = 10101;
-
             var payloadTitulo = new char[100];
             var titulo = new string (payloadTitulo, 0, 100);
 
@@ -324,7 +305,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var payloadConteudo = new char[50000];
             var conteudo = new string (payloadConteudo, 0, 5000);
 
-            var post = new Post (id, titulo, descricao, conteudo, quantidadeLikes, 0);
+            var post = new Post (titulo, descricao, conteudo, quantidadeLikes, 0);
             var quantidadeLikesContabilizado = (quantidadeLikes + 1);
             
             //Act
@@ -348,8 +329,6 @@ namespace tests.BlogStarWars.Core.Entities {
         public void Deve_Contabilizar_Um_Ponto_Por_View(int quantidadeViews)
         {
             //Arrange
-            var id = 10101;
-
             var payloadTitulo = new char[100];
             var titulo = new string (payloadTitulo, 0, 100);
 
@@ -359,7 +338,7 @@ namespace tests.BlogStarWars.Core.Entities {
             var payloadConteudo = new char[50000];
             var conteudo = new string (payloadConteudo, 0, 5000);
 
-            var post = new Post (id, titulo, descricao, conteudo, 0, quantidadeViews);
+            var post = new Post (titulo, descricao, conteudo, 0, quantidadeViews);
             var quantidadeViewsContabilizado = (quantidadeViews + 1);
             
             //Act

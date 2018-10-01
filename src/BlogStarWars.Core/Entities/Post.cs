@@ -1,5 +1,5 @@
 using System;
-using BlogStarWars.Core.Resources.StringResourse;
+using BlogStarWars.Core.Resources.StringResources;
 using BlogStarWars.Core.ValueObjects;
 using Flunt.Notifications;
 using Flunt.Validations;
@@ -9,7 +9,6 @@ namespace BlogStarWars.Core.Entities {
     {
         //Construtor usado para criar um post a primeira vez.
         public Post (
-            long id,
             string titulo,
             string descricao,
             string conteudo) 
@@ -32,7 +31,6 @@ namespace BlogStarWars.Core.Entities {
                         nameof(Conteudo), 
                         PostStringResource.Get(nameof(Conteudo))));
 
-            Id = id;
             Titulo = titulo;
             Descricao = descricao;
             Conteudo = conteudo;
@@ -42,14 +40,12 @@ namespace BlogStarWars.Core.Entities {
 
         //Construtor utilizado para quando o post já existe.
         public Post(
-            long id, 
             string titulo, 
             string descricao, 
             string conteudo, 
             int quantidadeLikes, 
             int quantidadeViews)
         {
-            Id = id;
             Titulo = titulo;
             Descricao = descricao;
             Conteudo = conteudo;

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BlogStarWars.Core.Resources.StringResourse {
+namespace BlogStarWars.Core.Resources.StringResources {
     public static class PostStringResource {
         /*
         Poderia desenvolver toda uma infra para StringResourse?

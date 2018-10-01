@@ -2,13 +2,12 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using FluentMigrator;
 using FluentMigrator.Runner;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AgroLowCost.Database
+namespace BlogStarWars.Database
 {
     public class Program
     {
@@ -26,11 +25,11 @@ namespace AgroLowCost.Database
 
         private static IServiceProvider CreateServices()
         {
-            /*var builder = new ConfigurationBuilder()
+            var builder = new ConfigurationBuilder()
                 .SetBasePath(Path.GetFullPath("../BlogStarWars.Api"))
-                .AddJsonFile("appsettings.Development.json");*/
+                .AddJsonFile("appsettings.Development.json");
 
-            //var configuration = builder.Build();
+            var configuration = builder.Build();
 
             var migrationAssemblies = Assembly
                 .GetExecutingAssembly()
@@ -39,11 +38,8 @@ namespace AgroLowCost.Database
                             e.BaseType == typeof(Migration))
                 .Select(e => e.Assembly).ToArray();
 
-            /*var connectionString = configuration
-                .GetConnectionString(
-                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
-                        ? "AgroLowCostMac"
-                        : "AgroLowCostLinux");*/
+            var connectionString = configuration
+                .GetConnectionString("BlogStarWars");
 
             return new ServiceCollection()
                 // Add common FluentMigrator services

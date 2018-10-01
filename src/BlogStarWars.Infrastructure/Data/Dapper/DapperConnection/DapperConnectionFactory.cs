@@ -3,7 +3,7 @@ using Microsoft.Data.Sqlite;
 
 namespace BlogStarWars.Infrastructure.Data.Dapper.DapperConnection
 {
-    public class DapperConnectionFactory
+    public class DapperConnectionFactory : IDapperConnectionFactory
     {
         public DapperConnectionFactory(string connectionString) => _connectionString = connectionString;
         private readonly string _connectionString;

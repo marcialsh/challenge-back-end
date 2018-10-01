@@ -1,4 +1,4 @@
-﻿using BlogStarWars.Core.Resources.StringResourse;
+﻿using BlogStarWars.Core.Resources.StringResources;
 using Flunt.Notifications;
 using Flunt.Validations;
 

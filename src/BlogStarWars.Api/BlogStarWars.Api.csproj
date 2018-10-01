@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.0-preview2-35157" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="2.0.0-preview1-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BlogStarWars.Database\BlogStarWars.Database.csproj" />
+    <ProjectReference Include="..\BlogStarWars.Infrastructure\BlogStarWars.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
