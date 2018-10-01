@@ -305,5 +305,75 @@ namespace tests.BlogStarWars.Core.Entities {
                 .Should ()
                 .Be (conteudoAlteracao);
         }
+
+        [Theory]
+        [InlineData(131)]
+        [InlineData(212)]
+        [InlineData(111)]
+        public void Deve_Contabilizar_Um_Ponto_Por_Like(int quantidadeLikes)
+        {
+            //Arrange
+            var id = 10101;
+
+            var payloadTitulo = new char[100];
+            var titulo = new string (payloadTitulo, 0, 100);
+
+            var payloadDescricao = new char[350];
+            var descricao = new string (payloadDescricao, 0, 350);
+
+            var payloadConteudo = new char[50000];
+            var conteudo = new string (payloadConteudo, 0, 5000);
+
+            var post = new Post (id, titulo, descricao, conteudo, quantidadeLikes, 0);
+            var quantidadeLikesContabilizado = (quantidadeLikes + 1);
+            
+            //Act
+            post.ToLike();
+
+            //Assert
+            post
+                .QuantidadeLikes
+                .Should()
+                .NotBe(quantidadeLikes);
+            post
+                .QuantidadeLikes
+                .Should()
+                .Be(quantidadeLikesContabilizado);
+        }
+
+        [Theory]
+        [InlineData(131)]
+        [InlineData(212)]
+        [InlineData(111)]
+        public void Deve_Contabilizar_Um_Ponto_Por_View(int quantidadeViews)
+        {
+            //Arrange
+            var id = 10101;
+
+            var payloadTitulo = new char[100];
+            var titulo = new string (payloadTitulo, 0, 100);
+
+            var payloadDescricao = new char[350];
+            var descricao = new string (payloadDescricao, 0, 350);
+
+            var payloadConteudo = new char[50000];
+            var conteudo = new string (payloadConteudo, 0, 5000);
+
+            var post = new Post (id, titulo, descricao, conteudo, 0, quantidadeViews);
+            var quantidadeViewsContabilizado = (quantidadeViews + 1);
+            
+            //Act
+            post.ToView();
+
+            //Assert
+            post
+                .QuantidadeViews
+                .Should()
+                .NotBe(quantidadeViews);
+            post
+                .QuantidadeViews
+                .Should()
+                .Be(quantidadeViewsContabilizado);
+        }
     }
 }
