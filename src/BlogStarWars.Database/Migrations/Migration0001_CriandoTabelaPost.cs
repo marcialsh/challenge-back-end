@@ -33,25 +33,12 @@ namespace BlogStarWars.Database.Migrations
                     .WithColumn("QuantidadeViews")
                         .AsInt16()
                         .NotNullable()
+                    .WithColumn("DataCriacao")
+                        .AsDateTime()
+                        .NotNullable()
                     .WithColumn("EstaDeletado")
                         .AsBoolean()
                         .Nullable();
-            
-            Create
-                .Table("Auditoria")
-                    .WithColumn("Id")
-                        .AsInt64()
-                        .PrimaryKey()
-                        .NotNullable()
-                    .WithColumn("Acao")
-                        .AsString(50)
-                        .NotNullable()
-                    .WithColumn("Data")
-                        .AsDateTime()
-                        .NotNullable()
-                    .WithColumn("Ip")
-                        .AsString(32)
-                        .NotNullable();
         }
     }
 }
