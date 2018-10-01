@@ -35,8 +35,8 @@ namespace BlogStarWars.Core.Entities {
             Titulo = titulo;
             Descricao = descricao;
             Conteudo = conteudo;
-            _like = new Like ();
-            _view = new View ();
+            _like = new Like (0);
+            _view = new View (0);
         }
 
         public long Id { get; private set; }
